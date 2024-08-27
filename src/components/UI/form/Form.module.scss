@@ -1,0 +1,57 @@
+.lable {
+	display: grid;
+	font-weight: 600;
+	grid-row-gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.group {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.flex {
+	display: block;
+}
+
+.password {
+	background-color: #f5f5f5;
+	color: #000;
+	padding: 1rem;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	&:focus {
+		background-color: #f0f0f0;
+	}
+
+	> img {
+		cursor: pointer;
+	}
+
+	> input {
+		color: #000;
+		border: none;
+		background: none;
+		font-size: 16px;
+		font-family: inherit;
+		width: 100%;
+
+		&::placeholder {
+			color: #8e8e8e;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.error {
+	color: #d63636;
+	text-wrap: wrap;
+	max-width: 24ch;
+}

@@ -1,0 +1,38 @@
+.cardSkeleton {
+	width: 100%;
+	border: 3px solid #1c1c1f;
+	border-radius: 0.5rem;
+	padding: 2rem 2.5rem;
+	margin-top: 2rem;
+}
+
+.lableSkeleton {
+	width: 7rem;
+	height: 1.5rem;
+	background: #1c1c1f;
+	border-radius: 1rem;
+}
+
+.terminSkeleton {
+	width: 15rem;
+	height: 2rem;
+	background: #1c1c1f;
+	border-radius: 1rem;
+	margin: 1.5rem 0 3rem;
+}
+
+.inputSkeleton {
+	width: 80%;
+	height: 3rem;
+	background: #1c1c1f;
+	border-radius: 0.5rem;
+	margin: 1.5rem 0 1rem;
+}
+
+.buttonSkeleton {
+	width: 10rem;
+	height: 3.5rem;
+	background: #1c1c1f;
+	border-radius: 0.5rem;
+	margin-bottom: 2rem;
+}

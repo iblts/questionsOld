@@ -1,0 +1,42 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	max-width: 100vw;
+}
+
+body {
+	color: #fff;
+	background: #101011;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	font-family: inherit;
+}
+
+input {
+	color: inherit;
+	font-family: inherit;
+}
+
+button {
+	color: inherit;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}

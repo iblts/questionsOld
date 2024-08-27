@@ -1,0 +1,46 @@
+.body {
+	max-width: 1000px;
+}
+
+.title {
+	font-size: 48px;
+	font-weight: 700;
+}
+
+.actions {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.5rem;
+	margin: 2rem 0;
+}
+
+.action {
+	font-size: 1.25rem;
+	font-weight: 700;
+	text-align: left;
+	padding: 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.titleSkeleton {
+	width: 50%;
+	height: 4rem;
+	background: #1c1c1f;
+	border-radius: 1rem;
+}
+
+.actionSkeleton {
+	height: 4.5rem;
+	background: #1c1c1f;
+	border-radius: 1rem;
+	width: 100%;
+}
+
+.cardsViewerSkeleton {
+	height: 532px;
+	background: #1c1c1f;
+	border-radius: 1rem;
+	width: 100%;
+}

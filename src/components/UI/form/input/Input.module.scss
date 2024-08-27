@@ -1,0 +1,19 @@
+.body {
+	background-color: #1c1c1f;
+	color: #fff;
+	border: none;
+	font-size: 16px;
+	font-family: inherit;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	transition: background-color 0.2s;
+
+	&::placeholder {
+		color: #6a6a77;
+	}
+
+	&:focus {
+		outline: none;
+		background-color: #212125;
+	}
+}

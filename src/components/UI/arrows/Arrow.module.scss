@@ -1,0 +1,22 @@
+.body {
+	border: 4px solid #1c1c1f;
+	border-radius: 50%;
+	cursor: pointer;
+	background: none;
+
+	svg {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+	}
+
+	&.rotated {
+		transform: rotate(180deg);
+	}
+
+	&.disabled {
+		opacity: 0.5;
+		cursor: default;
+	}
+}

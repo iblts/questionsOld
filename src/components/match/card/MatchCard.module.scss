@@ -1,0 +1,17 @@
+.card {
+	background: none;
+	border: 3px solid #1c1c1f;
+	font-size: 20px;
+	font-weight: 500;
+	padding: 40px;
+	border-radius: 1rem;
+
+	&.active {
+		border: 3px solid #fff;
+	}
+
+	&.invisible {
+		opacity: 0;
+		pointer-events: none;
+	}
+}

@@ -1,0 +1,76 @@
+.body {
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	border: 3px solid #1c1c1f;
+	border-radius: 10px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s;
+
+	&.rotated {
+		transform: rotateX(180deg);
+	}
+}
+
+.header {
+	position: absolute;
+	top: 25px;
+	padding: 0 30px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&.rotated {
+		top: auto;
+		bottom: 25px;
+		transform: rotateX(180deg);
+		justify-content: flex-end;
+	}
+}
+
+.hint {
+	display: flex;
+	gap: 7px;
+	font-weight: 500;
+	align-items: center;
+	padding: 6px 16px;
+	border-radius: 20px;
+	width: min-content;
+
+	&.showHint {
+		background: #1c1c1f68;
+	}
+
+	svg {
+		width: 16px;
+	}
+}
+
+.card {
+	width: 90%;
+	max-height: 80%;
+	text-align: center;
+	font-size: 3rem;
+	text-wrap: wrap;
+	overflow-y: auto;
+}
+
+.answer {
+	transform: rotateX(180deg);
+}
+
+.items {
+	display: flex;
+	align-items: center;
+}
+
+.edit {
+	width: 20px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}

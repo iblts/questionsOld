@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Module {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  categories  Category[]
+  private     Boolean    @default(false)
+  solved      Boolean    @default(false)
+  author      User?      @relation(fields: [authorId], references: [id])
+  authorId    String?
+  cards       Card[]
+}
+
+model Category {
+  id      String   @id @default(cuid())
+  title   String
+  modules Module[]
+}
+
+model Card {
+  id         String @id @default(cuid())
+  termin     String
+  definition String
+  stage      Int    @default(1)
+  module     Module @relation(fields: [moduleId], references: [id])
+  moduleId   String
+}
+
+model User {
+  id   String  @id @default(cuid())
+  name String? @unique
+
+  password String?
+  image    String?
+  modules  Module[]
+
+  @@map(name: "users")
+}

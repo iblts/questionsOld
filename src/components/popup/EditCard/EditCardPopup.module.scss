@@ -1,0 +1,38 @@
+@import '../../../styles/globals';
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: $background-overlay;
+	display: flex;
+	justify-content: center;
+	padding-top: 10vh;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+.body {
+	position: relative;
+	background: $background-card;
+	width: 50vw;
+	height: 50vh;
+	border-radius: 1rem;
+	padding: 3rem 2rem;
+}
+
+.close {
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: $background-card-dark;
+	border-radius: 50%;
+}

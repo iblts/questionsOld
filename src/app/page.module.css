@@ -1,0 +1,23 @@
+.modules {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3rem;
+}
+
+.category {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+
+	&:not(:first-child) {
+		margin-top: 5rem;
+	}
+}
+
+.moduleSkeleton {
+	width: 100%;
+	height: 14.5rem;
+	background-color: #1c1c1f;
+	border-radius: 1rem;
+}
