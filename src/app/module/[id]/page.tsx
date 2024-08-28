@@ -8,7 +8,7 @@ import styles from './page.module.scss'
 export default async function Page({ params }: { params: { id: string } }) {
 	const { id } = params
 
-	const response = await fetch(`/api/module/${id}`, {
+	const response = await fetch(`${process.env.API_URL}/api/module/${id}`, {
 		cache: 'no-cache',
 	})
 

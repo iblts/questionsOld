@@ -38,7 +38,7 @@ export default function Page() {
 		}
 
 		try {
-			const newModule = await fetch('/api/module', {
+			const newModule = await fetch(`${process.env.API_URL}/api/module`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
