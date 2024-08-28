@@ -12,7 +12,7 @@ export default async function Home() {
 		})
 		modules = await response.json()
 	} catch (e) {
-		console.error('Failed to fetch modules:', e)
+		console.error(`${process.env.API_URL}/api/module Failed to fetch modules:`, e)
 		return null
 	}
 
