@@ -2,6 +2,7 @@ import { Card } from '@prisma/client'
 import { NextRequest } from 'next/server'
 import prisma from '../../../../lib/prisma'
 
+
 export async function GET() {
 	const card = await prisma.card.findMany()
 
