@@ -12,19 +12,16 @@ export default function Question1({
 	nextQuestion: () => void
 }) {
 	const upgradeStage = async () => {
-		const response = await fetch(
-			`http://localhost:3000/api/card/${question.cardId}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					stage: 2,
-				}),
-				cache: 'no-cache',
-			}
-		)
+		await fetch(`${process.env.API_URL}/card/${question.cardId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				stage: 2,
+			}),
+			cache: 'no-cache',
+		})
 	}
 
 	const handleAnswer = (index: number) => {
