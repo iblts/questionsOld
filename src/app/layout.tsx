@@ -1,5 +1,4 @@
 import Header from '@/components/header/Header'
-import { NextAuthProvider } from '@/components/providers/NextAuthProvider'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
@@ -20,11 +19,9 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<NextAuthProvider>
-					<Toaster />
-					<Header />
-					{children}
-				</NextAuthProvider>
+				<Toaster />
+				<Header />
+				{children}
 			</body>
 		</html>
 	)
