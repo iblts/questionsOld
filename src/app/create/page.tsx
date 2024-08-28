@@ -51,7 +51,7 @@ export default function Page() {
 
 			const createdModule = await newModule.json()
 
-			await fetch('/api/card', {
+			await fetch(`${process.env.API_URL}/card`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
