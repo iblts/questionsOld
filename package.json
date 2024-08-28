@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"prisma": "bunx prisma db push --schema=./src/prisma/schema.prisma",
 		"prisma:studio": "bunx prisma studio --schema=./src/prisma/schema.prisma",
-		"postinstall": "prisma generate"
+		"postinstall": "prisma generate --schema=./src/prisma/schema.prisma"
 	},
 	"dependencies": {
 		"@next-auth/prisma-adapter": "^1.0.7",
