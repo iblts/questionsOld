@@ -2,6 +2,8 @@
 
 import Button from '@/components/UI/button/Button'
 import Form from '@/components/UI/form/Form'
+import Label from '@/components/UI/form/Label'
+import Input from '@/components/UI/form/input/Input'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import styles from './Form.module.scss'
@@ -32,24 +34,24 @@ export default function LoginForm() {
 
 	return (
 		<Form onSubmit={() => onSubmit({ email, password })}>
-			<Form.Label>
+			<Label>
 				Email
-				<Form.Input
+				<Input
 					type='text'
 					value={email}
 					placeholder='mail@gmail.com'
 					onChange={e => setEmail(e.target.value)}
 				/>
-			</Form.Label>
-			<Form.Label>
+			</Label>
+			<Label>
 				Пароль
-				<Form.Input
+				<Input
 					type='password'
 					value={password}
 					placeholder='Введите свой пароль'
 					onChange={e => setPassword(e.target.value)}
 				/>
-			</Form.Label>
+			</Label>
 			<Button className={styles.btn}>Войти</Button>
 		</Form>
 	)
