@@ -19,13 +19,13 @@ export async function POST(request: NextRequest) {
 	if (!data) throw new Error()
 
 	try {
-		const module = await prisma.module.findFirst({
+		const curModule = await prisma.module.findFirst({
 			where: {
 				id: data.moduleId,
 			},
 		})
 
-		if (!module) throw new Error("Module doesn't eхist")
+		if (!curModule) throw new Error("Module doesn't eхist")
 
 		const card = Array.isArray(data)
 			? await prisma.card.createMany({
