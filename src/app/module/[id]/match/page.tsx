@@ -8,7 +8,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 	const { id } = params
 
 	const response = await fetch(
-		`${process.env.API_URL}/api/module/${id}/cards?stage=4`,
+		`${process.env.API_URL}/module/${id}/cards?stage=4`,
 		{
 			cache: 'no-cache',
 		}
