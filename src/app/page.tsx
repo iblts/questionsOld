@@ -1,7 +1,6 @@
 import Container from '@/components/container/Container'
 import ModulePreview from '@/components/module/preview/ModulePreview'
 import type { ModuleWithRelations } from '@/types/module'
-import { Toaster } from 'react-hot-toast'
 import styles from './page.module.css'
 
 export default async function Home() {
@@ -13,7 +12,6 @@ export default async function Home() {
 	return (
 		<main className={styles.main}>
 			<Container>
-				<Toaster />
 				<p className={styles.category}>Ваши модули</p>
 				<div className={styles.modules}>
 					{modules?.map((module: ModuleWithRelations) => (
