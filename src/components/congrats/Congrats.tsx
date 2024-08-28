@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './Congrats.module.scss'
 
 interface IProps {
@@ -8,7 +9,7 @@ interface IProps {
 export default function Congrats({ text, buttons }: IProps) {
 	return (
 		<div className={styles.body}>
-			<img src='/congrats.svg' alt='congrats' width={500} height={500} />
+			<Image src='/congrats.svg' alt='congrats' width={500} height={500} />
 			{text}
 			{buttons?.map(btn => (
 				<button onClick={btn.func} key={btn.text}>
