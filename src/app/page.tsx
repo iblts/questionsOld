@@ -7,7 +7,7 @@ export default async function Home() {
 	let modules: ModuleWithRelations[] = []
 
 	try {
-		const response = await fetch(`${process.env.API_URL}/module`, {
+		const response = await fetch(`api/module`, {
 			cache: 'no-cache',
 		})
 		modules = await response.json()
