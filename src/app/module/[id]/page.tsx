@@ -12,12 +12,12 @@ export default async function Page({ params }: { params: { id: string } }) {
 		cache: 'no-cache',
 	})
 
-	const { module } = await response.json()
+	const { module: curModule } = await response.json()
 
 	return (
 		<main>
 			<Container className={styles.body} width={1000}>
-				<h1 className={styles.title}>{module.title}</h1>
+				<h1 className={styles.title}>{curModule.title}</h1>
 				<div className={styles.actions}>
 					<Link href={`/module/${id}/flashcards`}>
 						<Button variant='outlined' className={styles.action}>
@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 						</Button>
 					</Link>
 				</div>
-				<CardsViewer cards={module.cards} />
+				<CardsViewer cards={curModule.cards} />
 			</Container>
 		</main>
 	)
