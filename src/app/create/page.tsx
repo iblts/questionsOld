@@ -30,6 +30,13 @@ export default function Page() {
 	let currentId = 2
 
 	const handleCreateModule = async () => {
+		const notEmptyCards = cards.filter(
+			card => card.definition.trim() !== '' && card.termin.trim() !== ''
+		)
+
+		if (notEmptyCards.length > 1 && title.length > 0) {
+		}
+
 		try {
 			const newModule = await fetch('/api/module', {
 				method: 'POST',
@@ -42,9 +49,9 @@ export default function Page() {
 				}),
 			})
 
-			const module = await newModule.json()
+			const createdModule = await newModule.json()
 
-			const createdCards = await fetch('/api/card', {
+			await fetch('/api/card', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -53,12 +60,12 @@ export default function Page() {
 					cards.map(card => ({
 						termin: card.termin,
 						definition: card.definition,
-						moduleId: module.id,
+						moduleId: createdModule.id,
 					}))
 				),
 			})
 
-			return module
+			return createdModule
 		} catch (error) {
 			throw new Error(`Error on create: ${error}`)
 		}
@@ -102,15 +109,11 @@ export default function Page() {
 				</ul>
 				<Button
 					onClick={() => {
-						const notEmptyCards = cards.filter(
-							card => card.definition.trim() !== '' && card.termin.trim() !== ''
-						)
-
-						if (notEmptyCards.length > 1) handleCreateModule()
+						handleCreateModule()
 					}}
 					className={styles.button}
 				>
-					Создать
+					Создать модуль
 				</Button>
 			</Container>
 		</main>

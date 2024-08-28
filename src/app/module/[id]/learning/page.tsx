@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 	const resetStage = async () => {
 		'use server'
 
-		const response = await fetch(`${process.env.API_URL}/module/${id}/cards`, {
+		await fetch(`${process.env.API_URL}/module/${id}/cards`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
