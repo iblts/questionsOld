@@ -13,7 +13,7 @@ export default function Question2({
 	nextQuestion: () => void
 }) {
 	const upgradeStage = async () => {
-		await fetch(`${process.env.API_URL}/card/${question.cardId}`, {
+		await fetch(`/api/card/${question.cardId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
