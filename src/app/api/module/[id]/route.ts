@@ -8,7 +8,7 @@ export async function GET(
 ) {
 	const id = params.id
 
-	const module = await prisma.module.findFirst({
+	const curModule = await prisma.module.findFirst({
 		where: {
 			id,
 		},
@@ -17,7 +17,7 @@ export async function GET(
 		},
 	})
 
-	return Response.json({ module })
+	return Response.json({ module: curModule })
 }
 
 export async function DELETE(request: NextRequest) {
@@ -26,13 +26,13 @@ export async function DELETE(request: NextRequest) {
 	if (!data) throw new Error()
 
 	try {
-		const module = await prisma.module.delete({
+		const deletedModule = await prisma.module.delete({
 			where: {
 				id: data.id,
 			},
 		})
 
-		if (!module) throw new Error()
+		if (!deletedModule) throw new Error()
 	} catch (error) {
 		throw new Error(`Error: ${error}`)
 	}
@@ -51,14 +51,14 @@ export async function PUT(
 	if (!data) throw new Error()
 
 	try {
-		const module = await prisma.module.update({
+		const updatedModule = await prisma.module.update({
 			where: {
 				id,
 			},
 			data,
 		})
 
-		if (!module) throw new Error()
+		if (!updatedModule) throw new Error()
 
 		return Response.json({ module })
 	} catch (error) {

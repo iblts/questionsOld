@@ -27,11 +27,11 @@ export async function POST(request: NextRequest) {
 	if (!data) throw new Error()
 
 	try {
-		const module = await prisma.module.create({
+		const curModule = await prisma.module.create({
 			data,
 		})
-		if (!module) throw new Error()
-		return Response.json(module)
+		if (!curModule) throw new Error()
+		return Response.json(curModule)
 	} catch (error) {
 		throw new Error(`Неверные поля ${error} body: ${request.body}`)
 	}
