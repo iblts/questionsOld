@@ -1,10 +1,15 @@
 import Container from '@/components/container/Container'
 import ModulePreview from '@/components/module/preview/ModulePreview'
 import type { ModuleWithRelations } from '@/types/module'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import styles from './page.module.css'
 
 export default async function Home() {
 	let modules: ModuleWithRelations[] = []
+
+	const cookieStorage = cookies()
+	if (!cookieStorage.has('token')) redirect('/auth/login')
 
 	try {
 		const response = await fetch(`${process.env.API_URL}/module`, {
@@ -12,7 +17,7 @@ export default async function Home() {
 		})
 		modules = await response.json()
 	} catch (e) {
-		console.error(`${process.env.API_URL}/api/module Failed to fetch modules:`, e)
+		console.error(`${process.env.API_URL}/module Failed to fetch modules:`, e)
 		return null
 	}
 

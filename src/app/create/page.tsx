@@ -5,6 +5,8 @@ import EditCard from '@/components/card/edit/EditCard'
 import Container from '@/components/container/Container'
 import ModuleInfoInputs from '@/components/module/info/inputs/ModuleInfoInputs'
 import { Card } from '@prisma/client'
+import cookies from 'js-cookie'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from './page.module.scss'
 
@@ -28,6 +30,9 @@ export default function Page() {
 	])
 
 	let currentId = 2
+
+	const router = useRouter()
+	if (!cookies.get('token')) router.push('/auth/login')
 
 	const handleCreateModule = async () => {
 		const notEmptyCards = cards.filter(

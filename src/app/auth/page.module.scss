@@ -1,0 +1,16 @@
+.body {
+	width: clamp(300px, 30vw, 500px);
+	position: relative;
+}
+
+.account {
+	margin-top: 1rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.link {
+	font-weight: 600;
+	cursor: pointer;
+}

@@ -9,15 +9,43 @@ datasource db {
 }
 
 model Module {
-  id          String     @id @default(cuid())
-  title       String
-  description String?
-  categories  Category[]
-  private     Boolean    @default(false)
-  solved      Boolean    @default(false)
-  author      User?      @relation(fields: [authorId], references: [id])
-  authorId    String?
-  cards       Card[]
+  id             String           @id @default(cuid())
+  title          String
+  description    String?
+  categories     Category[]
+  private        Boolean          @default(false)
+  author         User?            @relation(fields: [authorId], references: [id])
+  authorId       String?
+  cards          Card[]
+  ModuleProgress ModuleProgress[]
+}
+
+model ModuleProgress {
+  id           String         @id @default(cuid())
+  user         User?          @relation(fields: [userId], references: [id])
+  userId       String?
+  module       Module         @relation(fields: [moduleId], references: [id])
+  moduleId     String
+  solved       Boolean        @default(false)
+  CardProgress CardProgress[]
+}
+
+model CardProgress {
+  id       String         @id @default(cuid())
+  card     Card           @relation(fields: [cardId], references: [id])
+  cardId   String
+  stage    Int            @default(1)
+  module   ModuleProgress @relation(fields: [moduleId], references: [id])
+  moduleId String
+}
+
+model Card {
+  id           String         @id @default(cuid())
+  termin       String
+  definition   String
+  module       Module         @relation(fields: [moduleId], references: [id])
+  moduleId     String
+  CardProgress CardProgress[]
 }
 
 model Category {
@@ -26,22 +54,14 @@ model Category {
   modules Module[]
 }
 
-model Card {
-  id         String @id @default(cuid())
-  termin     String
-  definition String
-  stage      Int    @default(1)
-  module     Module @relation(fields: [moduleId], references: [id])
-  moduleId   String
-}
-
 model User {
-  id   String  @id @default(cuid())
-  name String? @unique
+  id   String @id @default(cuid())
+  name String @unique
 
-  password String?
-  image    String?
-  modules  Module[]
+  password        String
+  image           String?
+  modules         Module[]
+  modulesProgress ModuleProgress[]
 
   @@map(name: "users")
 }

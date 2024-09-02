@@ -1,0 +1,47 @@
+.wrapper {
+	position: relative;
+	z-index: 10;
+
+	&:hover {
+		.tools {
+			height: 10rem;
+		}
+	}
+}
+
+.body {
+	width: 3rem;
+	height: 3rem;
+	background-color: #dcdcf1;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tools {
+	background: #1c1c1f;
+	border-radius: 0.5rem;
+	display: grid;
+	overflow: hidden;
+	height: 0;
+	position: absolute;
+	top: 110%;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: height 0.2s;
+
+	.tool {
+		padding: 1rem 1.5rem;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1rem;
+
+		&:hover {
+			background: #212125;
+		}
+	}
+}

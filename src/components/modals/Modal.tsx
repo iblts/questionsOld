@@ -25,7 +25,7 @@ export default function Modal({
 				onClick={e => e.stopPropagation()}
 			>
 				<span className={styles.close} onClick={onClose}>
-					<Plus fill='#000' width={40} />
+					<Plus fill='#dcdcf1' width={40} />
 				</span>
 				{children}
 			</div>

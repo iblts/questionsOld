@@ -17,6 +17,7 @@ export default function Header() {
 					<Link href='/create'>
 						<Button className={styles.createBtn}>Создать модуль</Button>
 					</Link>
+
 					<AuthButton />
 				</div>
 			</Container>
