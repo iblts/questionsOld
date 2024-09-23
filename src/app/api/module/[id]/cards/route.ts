@@ -7,27 +7,23 @@ export async function GET(
 	{ params }: { params: { id: string } }
 ) {
 	const id = params.id
-	const stage = request.nextUrl.searchParams.get('stage')
+	let stage: number = +request.nextUrl.searchParams.get('stage')!
 
 	if (stage && !isNaN(+stage)) {
-		const cards = await prisma.card.findMany({
-			where: {
-				moduleId: id,
-				stage: {
-					lt: +stage,
-				},
-			},
-		})
-
-		return Response.json(cards || [])
+		stage = +stage
+	} else {
+		stage = 3
 	}
 
-	const cards = await prisma.card.findMany({
+	const cards = await prisma.cardProgress.findMany({
 		where: {
 			moduleId: id,
 			stage: {
-				lt: 3,
+				lt: stage,
 			},
+		},
+		include: {
+			card: true,
 		},
 	})
 

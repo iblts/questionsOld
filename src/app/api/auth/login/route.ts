@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 			{
 				id: user.id,
 			},
-			'iblts',
+			`${process.env.SECRET_KEY}`,
 			{
 				expiresIn: '30d',
 			}

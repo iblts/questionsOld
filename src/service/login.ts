@@ -1,8 +1,8 @@
 import cookies from 'js-cookie'
 
-export default async function register(name: string, password: string) {
+export default async function login(name: string, password: string) {
 	try {
-		const res = await fetch('/api/auth/register', {
+		const res = await fetch('/api/auth/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ name, password }),

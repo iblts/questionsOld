@@ -3,14 +3,14 @@ import prisma from '../../../../lib/prisma'
 
 export async function GET() {
 	const modules = await prisma.module.findMany({
-		include: {
-			author: true,
-			cards: true,
-		},
 		where: {
 			cards: {
 				some: {},
 			},
+			private: false,
+		},
+		include: {
+			cards: true,
 		},
 	})
 

@@ -19,9 +19,9 @@ export default function LoginForm() {
 	const { signIn } = useAuthStore()
 
 	const handleSubmit = async () => {
+		await login(name, password)
 		if (cookies.get('token')) {
 			signIn()
-			await login(name, password)
 			router.push('/')
 		}
 	}

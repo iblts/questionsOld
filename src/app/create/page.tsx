@@ -6,6 +6,7 @@ import Container from '@/components/container/Container'
 import ModuleInfoInputs from '@/components/module/info/inputs/ModuleInfoInputs'
 import { Card } from '@prisma/client'
 import cookies from 'js-cookie'
+import { verify } from 'jsonwebtoken'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import styles from './page.module.scss'
@@ -40,39 +41,52 @@ export default function Page() {
 		)
 
 		if (notEmptyCards.length > 1 && title.length > 0) {
-		}
+			const token = cookies.get('token')
 
-		try {
-			const newModule = await fetch(`${process.env.API_URL}/module`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					title,
-					description,
-				}),
-			})
+			if (!token) {
+				router.push('/auth/login')
+				return
+			}
 
-			const createdModule = await newModule.json()
+			console.log(token)
 
-			await fetch(`${process.env.API_URL}/card`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(
-					cards.map(card => ({
-						termin: card.termin,
-						definition: card.definition,
-						moduleId: createdModule.id,
-					}))
-				),
-			})
+			const user = verify(token, `${process.env.SECRET_KEY}`) as { id: string }
 
-			return createdModule
-		} catch (error) {
-			throw new Error(`Error on create: ${error}`)
+			console.log(user)
+
+			try {
+				const newModule = await fetch(`${process.env.API_URL}/module`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						title,
+						description,
+						authorId: user.id,
+					}),
+				})
+
+				const createdModule = await newModule.json()
+
+				await fetch(`${process.env.API_URL}/card`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(
+						cards.map(card => ({
+							termin: card.termin,
+							definition: card.definition,
+							moduleId: createdModule.id,
+						}))
+					),
+				})
+
+				return createdModule
+			} catch (error) {
+				throw new Error(`Error on create: ${error}`)
+			}
 		}
 	}
 
