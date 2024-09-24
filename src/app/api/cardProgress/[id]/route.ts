@@ -1,7 +1,10 @@
 import type { NextRequest } from 'next/server'
 import prisma from '../../../../../lib/prisma'
 
-export async function GET({ params }: { params: { id: string } }) {
+export async function GET(
+	request: NextRequest,
+	{ params }: { params: { id: string } }
+) {
 	const { id } = params
 
 	const card = await prisma.cardProgress.findFirst({
