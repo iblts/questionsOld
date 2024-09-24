@@ -12,7 +12,7 @@ export default function Question1({
 	nextQuestion: () => void
 }) {
 	const upgradeStage = async () => {
-		await fetch(`/api/card/${question.cardId}`, {
+		await fetch(`/api/cardProgress/${question.cardId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

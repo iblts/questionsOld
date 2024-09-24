@@ -27,3 +27,13 @@ export async function POST(request: NextRequest) {
 
 	return Response.json(cards)
 }
+
+export async function PUT(request: NextRequest) {
+	const data = await request.json()
+
+	const cards = await prisma.cardProgress.updateMany({
+		data,
+	})
+
+	return Response.json(cards)
+}
