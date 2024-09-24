@@ -1,5 +1,5 @@
-import { verify } from 'jsonwebtoken'
 import { NextRequest } from 'next/server'
+import { getUserId } from '../../../../../lib/auth.service'
 import prisma from '../../../../../lib/prisma'
 
 export async function GET(
@@ -7,11 +7,8 @@ export async function GET(
 	{ params }: { params: { id: string } }
 ) {
 	const { id } = params
-	const token = request.headers.get('Authorization')
 
-	if (!token) return Response.json({ message: 'no token' })
-
-	const userId = verify(token, process.env.SECRET_KEY!).id
+	const userId = getUserId(request) as string
 
 	const modules = await prisma.moduleProgress.findFirst({
 		where: {
