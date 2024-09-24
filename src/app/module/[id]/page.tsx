@@ -18,7 +18,9 @@ export default async function Page({ params }: { params: { id: string } }) {
 
 	if (!token) redirect('/auth/login')
 
-	const verified = verify(token.value, process.env.SECRET_KEY!)
+	const verified = verify(token.value, process.env.SECRET_KEY!) as {
+		id: string
+	}
 
 	if (!verified?.id) {
 		cookieStorage.delete('token')
