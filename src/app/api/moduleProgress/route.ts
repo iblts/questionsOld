@@ -21,9 +21,9 @@ export async function POST(request: NextRequest) {
 	if (moduleProgress)
 		return Response.json({ message: 'Module progress already exist' })
 
-	const module = await prisma.moduleProgress.create({
+	const createdModule = await prisma.moduleProgress.create({
 		data,
 	})
 
-	return Response.json(module)
+	return Response.json(createdModule)
 }
